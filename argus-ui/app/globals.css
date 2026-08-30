@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 222 47% 5%;
+    /* Darker background */
+    --foreground: 210 40% 98%;
+
+    --card: 220 40% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 5%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 195 100% 50%;
+    /* Cyan 500 - more vibrant */
+    --primary-foreground: 222 47% 11%;
+
+    --secondary: 217 33% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 199 89% 48%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 20%;
+    --input: 217 33% 20%;
+    --ring: 195 100% 50%;
+
+    --radius: 0.25rem;
+    /* Sharper corners for mil-spec look */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "ss01", "ss02", "cv01", "cv02";
+  }
+}
+
+/* Elite Intelligence Components */
+
+.glass-panel {
+  @apply bg-slate-900/60 backdrop-blur-md border border-slate-800 shadow-xl relative overflow-hidden;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.glass-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.5), transparent);
+}
+
+/* Scanner Line Animation */
+.scanner-line {
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(6, 182, 212, 0.2), transparent);
+  animation: scan 4s linear infinite;
+  transform: skewX(-20deg) translateX(-150%);
+}
+
+@keyframes scan {
+  0% {
+    transform: skewX(-20deg) translateX(-150%);
+  }
+
+  100% {
+    transform: skewX(-20deg) translateX(250%);
+  }
+}
+
+/* Tech Border - Corner Accents */
+.tech-border {
+  position: relative;
+  border: 1px solid rgba(6, 182, 212, 0.1);
+}
+
+.tech-border::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid var(--primary);
+  border-left: 2px solid var(--primary);
+  transition: all 0.3s ease;
+}
+
+.tech-border::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 8px;
+  height: 8px;
+  border-bottom: 2px solid var(--primary);
+  border-right: 2px solid var(--primary);
+  transition: all 0.3s ease;
+}
+
+.tech-border:hover::before,
+.tech-border:hover::after {
+  width: 100%;
+  height: 100%;
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+/* CRT / Screen Effects */
+.scanlines {
+  background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0) 50%,
+      rgba(0, 0, 0, 0.2) 50%,
+      rgba(0, 0, 0, 0.2));
+  background-size: 100% 4px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.1;
+}
+
+/* Glitch Text Effect Support */
+.glitch-text {
+  position: relative;
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(6, 182, 212, 0.2);
+  }
+
+  50% {
+    box-shadow: 0 0 15px rgba(6, 182, 212, 0.5);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite;
+}
