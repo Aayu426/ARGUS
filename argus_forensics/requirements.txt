@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+numpy
+pandas
+scikit-learn
+torch
+torch_geometric
+networkx
+transformers
+PyExifTool
+reportlab
+ollama
+Pillow
+opencv-python
+matplotlib
+pytest
+python-multipart
