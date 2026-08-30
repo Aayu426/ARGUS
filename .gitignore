@@ -1,0 +1,33 @@
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env
+
+# Node.js
+node_modules/
+dist/
+build/
+.next/
+out/
+
+# IDEs
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project-Specific
+evidence_vault/
+*.log
+*.sqlite
+project_overview.html
+experimentation_slides.md
+project_overview.pdf
